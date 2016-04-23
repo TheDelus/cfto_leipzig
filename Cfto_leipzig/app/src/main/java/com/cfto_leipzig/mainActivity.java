@@ -79,7 +79,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mainActivity.this, display_probability.class);
-                intent.putExtra("prob","Enter probability here!");
+                intent.putExtra("prob",100);
                 intent.putExtra("info", t);
                 startActivity(intent);
             }

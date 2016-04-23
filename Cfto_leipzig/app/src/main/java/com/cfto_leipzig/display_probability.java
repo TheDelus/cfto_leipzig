@@ -50,7 +50,7 @@ public class display_probability extends AppCompatActivity {
         if(probability > 50)prob.setTextColor(Color.RED);
         else if(probability < 25)prob.setTextColor(Color.GREEN);
         else prob.setTextColor(Color.YELLOW);
-        prob.setText(probability);
+        prob.setText(String.valueOf(probability));
 
     }
 }
