@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
@@ -26,15 +28,22 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
 
     public double LocationLongitude = 0.;
     public double LocationLatitude = 0.;
-
     private Controller cont;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainactivity);
-
         cont = new Controller(this);
+
+        Button search = (Button) findViewById(R.id.button3);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         buildGoogleApiClient();
     }
 
