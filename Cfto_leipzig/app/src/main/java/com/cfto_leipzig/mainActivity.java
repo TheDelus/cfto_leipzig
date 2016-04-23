@@ -9,5 +9,9 @@ public class mainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainactivity);
+
+        //Controller cont = new Controller(this);
+        //cont.fetchMetarData("EDDP");
+
     }
 }
