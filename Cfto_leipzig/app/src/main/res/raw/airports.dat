@@ -4643,8 +4643,6 @@
 5678,"Combolcha Airport","Dessie","Ethiopia","DSE","HADC",11.0825,39.7114,6117,3,"U","Africa/Addis_Ababa"
 5677,"Beica Airport","Beica","Ethiopia","BEI","HABE",9.38639,34.5219,5410,3,"U","Africa/Addis_Ababa"
 5676,"Baco Airport","Baco","Ethiopia","BCO","HABC",5.78287,36.562,0,3,"U","Africa/Addis_Ababa"
-5675,"Sao Filipe Airport","Sao Filipe, Fogo Island","Cape Verde","SFL","GVSF",14.885,-24.48,617,-1,"U","Atlantic/Cape_Verde"
-5674,"Praia International Airport","Praia, Santiago Island","Cape Verde","RAI","GVNP",14.9245,-23.4935,230,-1,"U","Atlantic/Cape_Verde"
 5673,"El Aroui Airport","El Aroui","Morocco","NDR","GMMW",34.9888,-3.02821,574,0,"N","Africa/Casablanca"
 5672,"Hassan I Airport","El Aaiún","Western Sahara","EUN","GMML",27.1517,-13.2192,207,0,"N","Africa/El_Aaiun"
 5671,"Mogador Airport","Essadouira","Morocco","ESU","GMMI",31.3975,-9.681667,384,0,"N","Africa/Casablanca"
@@ -4756,7 +4754,6 @@
 5565,"Fair Isle Airport","Fair Isle","United Kingdom","FIE","EGEF",59.5358,-1.62806,223,0,"E","Europe/London"
 5564,"Eday Airport","Eday","United Kingdom","EOI","EGED",59.1906,-2.77222,10,0,"E","Europe/London"
 5563,"Campbeltown Airport","Campbeltown","United Kingdom","CAL","EGEC",55.4372,-5.68639,42,0,"E","Europe/London"
-5562,"Robin Hood Doncaster Sheffield Airport","Doncaster, Sheffield","United Kingdom","DSA","EGCN",53.474722,-1.004444,55,0,"E","Europe/London"
 5561,"Nottingham Airport","Nottingham","United Kingdom","NQT","EGBN",52.92,-1.079167,138,0,"E","Europe/London"
 5560,"Seinäjoki Airport","Seinäjoki / Ilmajoki","Finland","SJY","EFSI",62.6921,22.8323,302,2,"E","Europe/Helsinki"
 5559,"Helgoland-Düne Airport","Helgoland","Germany","HGL","EDXH",54.1853,7.91583,7,1,"E",\N
