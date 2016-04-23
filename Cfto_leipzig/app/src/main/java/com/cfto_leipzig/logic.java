@@ -1,5 +1,7 @@
 package com.cfto_leipzig;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Set;
 
@@ -8,9 +10,11 @@ import java.util.Set;
  */
 public class logic {
 
+    private static final String LOG_KEY = "XML_STUFF";
+
     public static int logi(HashMap<String,Integer> hmap){
 
-        //System.out.println(hmap.size());
+        Log.i(LOG_KEY, ""+hmap.size());
 
         String intensity = new String("isModerate");
         String descriptor = new String("isPartial");

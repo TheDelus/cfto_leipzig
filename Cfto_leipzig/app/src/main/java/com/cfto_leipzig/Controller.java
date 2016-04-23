@@ -59,4 +59,8 @@ public class Controller {
     public String getNearestAirport(double lat, double lon) {
        return al.getNextAirport(lat, lon);
     }
+
+    public String getAiportNameByIATA(String iata) {
+        return al.getAirportNameByIATA(iata);
+    }
 }

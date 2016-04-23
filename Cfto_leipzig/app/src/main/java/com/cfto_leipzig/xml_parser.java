@@ -31,8 +31,6 @@ public class xml_parser {
         try {
 
             InputStream xmlRes = main.getResources().openRawResource(R.raw.impactrules);
-            Reader r = new InputStreamReader(xmlRes);
-            BufferedReader in = new BufferedReader(r);
 
             //File fXmlFile = new File("impactRules.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

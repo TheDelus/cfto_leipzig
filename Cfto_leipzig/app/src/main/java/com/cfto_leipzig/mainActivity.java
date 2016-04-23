@@ -95,7 +95,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
 
             nearestAirpotIATA = cont.getNearestAirport(LocationLatitude, LocationLongitude);
 
-            ed.setText(nearestAirpotIATA);
+            ed.setText(cont.getAiportNameByIATA(nearestAirpotIATA));
         }
     }
 

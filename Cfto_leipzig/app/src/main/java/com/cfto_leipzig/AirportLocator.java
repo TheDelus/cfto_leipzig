@@ -14,7 +14,7 @@ public class AirportLocator {
         this.airports = airports;
     }
 
-    String getNextAirport(double lat, double lon) {
+    public String getNextAirport(double lat, double lon) {
         for(int i = 0; i < airports.size(); i++)
         {
             double distance = getDistanceFromLatLonInKm
@@ -29,6 +29,16 @@ public class AirportLocator {
         }
 
         return iata;
+    }
+
+    public String getAirportNameByIATA (String iata) {
+        for(int i = 0; i < airports.size(); i++)
+        {
+           if(airports.get(i).getIata().equals(iata))
+                return airports.get(i).getAirportName();
+        }
+
+        return "Airport not found!";
     }
 
     private double getDistanceFromLatLonInKm(double lat1,double lon1,double lat2, double lon2) {
