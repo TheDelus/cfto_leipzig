@@ -1,12 +1,15 @@
 package com.cfto_leipzig;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Button;
@@ -48,13 +51,37 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         int hours = c.get(Calendar.HOUR_OF_DAY)+1;
         time.setText(hours+":00");
 
+        ImageButton info = (ImageButton) findViewById(R.id.imageButton2);
+        info.setImageResource(R.drawable.information);
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(mainActivity.this)
+                        .setTitle("Info")
+                        .setMessage("This App is created for people who want to know if their flight can have a decent amount of delay.\nFirst you need to settle the right time in hours by pressing \"+\" or \"-\".\nIf your departure airport is not the right one, change it as well as the airport you want to flight to.\nAt last just hit \"GO!\" and the probability of getting delay will be calculated!")
+                        .setPositiveButton("Understood!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }
+        });
+
         Button search = (Button) findViewById(R.id.button3);
         ed = (EditText) findViewById(R.id.editText);
-
+        final String[] t = new String[2];
+        t[0] = "heavy rain";
+        t[1] = "cloudy";
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mainActivity.this, display_probability.class));
+                Intent intent = new Intent(mainActivity.this, display_probability.class);
+                intent.putExtra("prob","Enter probability here!");
+                intent.putExtra("info", t);
+                startActivity(intent);
             }
         });
         Button timeMinus = (Button) findViewById(R.id.button);
