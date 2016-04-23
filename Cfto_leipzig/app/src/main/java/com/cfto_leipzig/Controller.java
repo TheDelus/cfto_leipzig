@@ -42,12 +42,12 @@ public class Controller {
 
     }
 
-    public void fetchMetarData(String airportCode) {
+    public void fetchMetarData(String airportCodeICAO) {
         Log.i(LOG_TAG, "Start Fetch");
 
 
         Bundle args = new Bundle();
-        args.putString(AIRPORT, airportCode);
+        args.putString(AIRPORT, airportCodeICAO);
         mainActivity.getSupportLoaderManager().restartLoader(METAR_LOADER, args, mlm);
         Log.i(LOG_TAG, "End Fetch");
 
@@ -72,5 +72,9 @@ public class Controller {
 
     public String getAiportNameByIATA(String iata) {
         return al.getAirportNameByIATA(iata);
+    }
+
+    public String getAirportICAOByIATA(String iata) {
+        return al.getICAOByIATA(iata);
     }
 }

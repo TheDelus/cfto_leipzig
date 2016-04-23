@@ -40,4 +40,15 @@ public class AirportLocator {
 
         return "Airport not found!";
     }
+
+    public String getICAOByIATA(String iata) {
+
+        for(int i = 0; i < airports.size(); i++)
+        {
+            if(airports.get(i).getIata().equals(iata))
+                return airports.get(i).getIcao();
+        }
+
+        return "null";
+    }
 }

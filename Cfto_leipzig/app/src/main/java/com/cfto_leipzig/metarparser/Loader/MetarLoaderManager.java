@@ -39,7 +39,7 @@ public class MetarLoaderManager implements LoaderManager.LoaderCallbacks<Metar> 
     public void onLoadFinished(Loader<Metar> loader, Metar data) {
         Log.i(LOG_TAG, "Data received!");
 
-        if(data.getStationID() != null) {
+        if(data != null) {
             dataReceived = true;
             metar = data;
         }

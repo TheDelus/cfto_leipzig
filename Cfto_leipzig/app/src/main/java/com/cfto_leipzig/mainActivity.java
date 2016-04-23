@@ -49,7 +49,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
 
         TextView time = (TextView) findViewById(R.id.textView);
         int hours = c.get(Calendar.HOUR_OF_DAY)+1;
-        time.setText(hours+":00");
+        time.setText(hours + ":00");
 
         ImageButton info = (ImageButton) findViewById(R.id.imageButton2);
         info.setImageResource(R.drawable.information);
@@ -153,6 +153,8 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             nearestAirpotIATA = cont.getNearestAirport(LocationLatitude, LocationLongitude);
 
             ed.setText(cont.getAiportNameByIATA(nearestAirpotIATA));
+            cont.fetchMetarData(cont.getAirportICAOByIATA(nearestAirpotIATA));
+
         }
     }
 
