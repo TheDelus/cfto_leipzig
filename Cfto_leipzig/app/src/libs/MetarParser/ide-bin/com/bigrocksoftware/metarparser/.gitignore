@@ -1,9 +1,0 @@
-/Metar.class
-/MetarConstants.class
-/MetarFetcher.class
-/MetarParseException.class
-/MetarParser.class
-/Obscuration.class
-/RunwayVisualRange.class
-/SkyCondition.class
-/WeatherCondition.class
