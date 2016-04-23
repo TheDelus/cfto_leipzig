@@ -7,6 +7,7 @@ import com.cfto_leipzig.metarparser.Loader.MetarLoaderManager;
 import com.cfto_leipzig.metarparser.Metar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by TheDelus on 23.04.2016.
@@ -20,6 +21,9 @@ public class Controller {
     AirportParser ap;
     AirportLocator al;
     xml_parser xl;
+    logic logic;
+
+    HashMap<String,Integer> rules;
 
     public Controller(mainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -27,6 +31,12 @@ public class Controller {
         ap = new AirportParser(mainActivity);
         al = new AirportLocator(getAirports());
         xl = new xml_parser(mainActivity);
+        rules = xl.getHmap();
+
+        logic = new logic();
+        Log.i(LOG_TAG, ""+logic.logi(rules));
+
+
 
         //ap.getAirports();
 

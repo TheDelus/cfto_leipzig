@@ -1,11 +1,14 @@
 package com.cfto_leipzig;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.XMLReader;
+import org.xmlpull.v1.XmlPullParser;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -21,16 +24,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
  */
 public class xml_parser {
 
-    Context main;
+    private static final String LOG_KEY = "parser";
+    HashMap<String,Integer> hmap = new HashMap<String, Integer>();
 
     public xml_parser(mainActivity mainActivity) {
 
-
-        HashMap<String,Integer> hmap = new HashMap<String, Integer>();
-
         try {
 
-            InputStream xmlRes = main.getResources().openRawResource(R.raw.impactrules);
+            InputStream xmlRes = mainActivity.getResources().openRawResource(R.raw.impactrules);
 
             //File fXmlFile = new File("impactRules.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -71,13 +72,18 @@ public class xml_parser {
             e.printStackTrace();
         }
         //int i=0;
-        for (String key : hmap.keySet()) {
-            System.out.println(key + " " + hmap.get(key));
-            //System.out.println(i++);
-        }
+//        for (String key : hmap.keySet()) {
+//            System.out.println(key + " " + hmap.get(key));
+//            //System.out.println(i++);
+//        }
         //return hmap;
-        logic.logi(hmap);
+        //logic.logi(hmap);
 
     }
+
+    public HashMap<String, Integer> getHmap() {
+        return hmap;
+    }
+
 
 }

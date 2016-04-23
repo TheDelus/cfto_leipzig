@@ -10,9 +10,9 @@ import java.util.Set;
  */
 public class logic {
 
-    private static final String LOG_KEY = "XML_STUFF";
+    private static final String LOG_KEY = "logic";
 
-    public static int logi(HashMap<String,Integer> hmap){
+    public int logi(HashMap<String,Integer> hmap){
 
         Log.i(LOG_KEY, ""+hmap.size());
 
@@ -36,7 +36,7 @@ public class logic {
 
         }
         System.out.println(impactvalue);
-        return impactvalue;
+        return percentProbability(impactvalue);
     }
 
     public int percentProbability(int impactvalue){

@@ -13,7 +13,9 @@ public class weatherController{
     private String data = "";
     private Calendar c;
 
-    public weatherController(){}
+    public weatherController(){
+
+    }
 
     public weatherController(String url) {
         this.url = url;
