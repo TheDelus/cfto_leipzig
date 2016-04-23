@@ -15,6 +15,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.Calendar;
+
 public class mainActivity extends AppCompatActivity implements ConnectionCallbacks{
 
     private static final String LOG_KEY = "Main";
@@ -34,12 +36,14 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
     public double LocationLongitude = 0.;
     public double LocationLatitude = 0.;
     private Controller cont;
-
+    final Calendar c = Calendar.getInstance();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainactivity);
         cont = new Controller(this);
+
+        TextView time = (TextView) findViewById(R.id.textView);
 
         Button search = (Button) findViewById(R.id.button3);
         ed = (EditText) findViewById(R.id.editText);
@@ -48,6 +52,30 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mainActivity.this, display_probability.class));
+            }
+        });
+        Button timeMinus = (Button) findViewById(R.id.button);
+        Button timePlus = (Button) findViewById(R.id.button2);
+
+        timeMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                int hours = c.get(Calendar.HOUR_OF_DAY);
+                TextView temp = (TextView) findViewById(R.id.textView);
+                int h = Integer.parseInt(temp.getText().toString().split(":")[0]);
+                h = h-1 < hours? h:h-1;
+                temp.setText(h+":00");
+            }
+        });
+
+        timePlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                int hours = c.get(Calendar.HOUR_OF_DAY);
+                TextView temp = (TextView) findViewById(R.id.textView);
+                int h = Integer.parseInt(temp.getText().toString().split(":")[0]);
+                h = h+1 > 24? h:h+1;
+                temp.setText(h+":00");
             }
         });
 
