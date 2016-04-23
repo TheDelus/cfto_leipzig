@@ -4,6 +4,7 @@ package com.cfto_leipzig;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -12,6 +13,7 @@ import com.google.android.gms.location.LocationServices;
 
 public class mainActivity extends AppCompatActivity implements ConnectionCallbacks{
 
+    private static final String LOG_KEY = "Main";
     /**
      * Provides the entry point to Google Play services.
      */
@@ -25,11 +27,14 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
     public double LocationLongitude = 0.;
     public double LocationLatitude = 0.;
 
+    private Controller cont;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainactivity);
 
+        cont = new Controller(this);
         buildGoogleApiClient();
     }
 
@@ -66,6 +71,12 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         if (mLastLocation != null) {
             LocationLatitude = mLastLocation.getLatitude();
             LocationLongitude = mLastLocation.getLongitude();
+
+            Log.i(LOG_KEY, ""+LocationLatitude);
+            Log.i(LOG_KEY, ""+LocationLongitude);
+
+            Log.i(LOG_KEY, cont.getNearestAirport(LocationLatitude, LocationLongitude));
+
         }
     }
 

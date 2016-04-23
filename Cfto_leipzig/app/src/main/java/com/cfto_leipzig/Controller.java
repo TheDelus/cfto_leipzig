@@ -18,11 +18,13 @@ public class Controller {
     mainActivity mainActivity;
     MetarLoaderManager mlm;
     AirportParser ap;
+    AirportLocator al;
 
     public Controller(mainActivity mainActivity) {
         this.mainActivity = mainActivity;
         mlm = new MetarLoaderManager(mainActivity);
         ap = new AirportParser(mainActivity);
+        al = new AirportLocator(getAirports());
 
         //ap.getAirports();
 
@@ -50,5 +52,9 @@ public class Controller {
 
     public ArrayList<Airport> getAirports() {
         return ap.getAirports();
+    }
+
+    public String getNearestAirport(double lat, double lon) {
+       return al.getNextAirport(lat, lon);
     }
 }

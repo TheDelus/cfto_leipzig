@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -53,8 +52,6 @@ public class AirportParser {
             ap.setTimezone(Double.parseDouble(parts[9].replaceAll("\"", "")));
             ap.setDst(parts[10].replaceAll("\"", ""));
             ap.setTz(parts[11].replaceAll("\"", ""));
-
-            Log.i(LOG_KEY, ap.toString());
 
             airports.add(ap);
         }
