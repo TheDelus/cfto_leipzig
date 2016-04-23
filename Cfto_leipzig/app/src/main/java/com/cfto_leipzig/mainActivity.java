@@ -6,6 +6,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,9 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
      */
     protected Location mLastLocation;
 
+    EditText ed;
+    String nearestAirpotIATA;
+
     public double LocationLongitude = 0.;
     public double LocationLatitude = 0.;
     private Controller cont;
@@ -38,6 +42,8 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         cont = new Controller(this);
 
         Button search = (Button) findViewById(R.id.button3);
+        ed = (EditText) findViewById(R.id.editText);
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,8 +91,11 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             Log.i(LOG_KEY, ""+LocationLatitude);
             Log.i(LOG_KEY, ""+LocationLongitude);
 
-            Log.i(LOG_KEY, cont.getNearestAirport(LocationLatitude, LocationLongitude));
+            //Log.i(LOG_KEY, cont.getNearestAirport(LocationLatitude, LocationLongitude));
 
+            nearestAirpotIATA = cont.getNearestAirport(LocationLatitude, LocationLongitude);
+
+            ed.setText(nearestAirpotIATA);
         }
     }
 
