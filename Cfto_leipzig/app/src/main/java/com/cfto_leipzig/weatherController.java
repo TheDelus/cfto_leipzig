@@ -19,13 +19,13 @@ public class weatherController{
         this.url = url;
     }
 
-    public String getWeather(String code, String time){
+    public String getWeather(double lat, double lon, String time){
         c = Calendar.getInstance(); //[YYYY]-[MM]-[DD]T[HH]:[MM]:[SS]
-        SimpleDateFormat df = new SimpleDateFormat("[yyyy]-[MM]-[dd]T");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-ddT");
         String formattedDate = df.format(c.getTime());
-        formattedDate += "["+time+"]:[00]:[00]";
+        formattedDate += time+":00:00";
         
-        new Fetcher().execute(url+"51.3288,12.371,[2016]-[04]-[23]T[16]:[00]:[00]");
+        new Fetcher().execute(url+lat+","+lon+","+formattedDate);
         return(data);     //https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE,TIME
     }
 

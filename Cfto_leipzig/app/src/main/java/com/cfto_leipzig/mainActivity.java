@@ -1,6 +1,7 @@
 package com.cfto_leipzig;
 
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -40,7 +41,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(mainActivity.this, display_probability.class));
             }
         });
 

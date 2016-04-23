@@ -1,5 +1,7 @@
 package com.cfto_leipzig;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,16 @@ public class display_probability extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 //alert
+                new AlertDialog.Builder(display_probability.this)
+                        .setTitle("Info")
+                        .setMessage("Just look outside!!!1!11")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
 
