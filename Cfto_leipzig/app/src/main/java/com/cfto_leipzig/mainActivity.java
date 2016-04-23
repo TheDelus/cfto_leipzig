@@ -37,6 +37,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
     public double LocationLatitude = 0.;
     private Controller cont;
     final Calendar c = Calendar.getInstance();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,8 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         cont = new Controller(this);
 
         TextView time = (TextView) findViewById(R.id.textView);
+        int hours = c.get(Calendar.HOUR_OF_DAY)+1;
+        time.setText(hours+":00");
 
         Button search = (Button) findViewById(R.id.button3);
         ed = (EditText) findViewById(R.id.editText);
@@ -63,7 +66,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
                 int hours = c.get(Calendar.HOUR_OF_DAY);
                 TextView temp = (TextView) findViewById(R.id.textView);
                 int h = Integer.parseInt(temp.getText().toString().split(":")[0]);
-                h = h-1 < hours? h:h-1;
+                h = h-2 < hours? h:h-1;
                 temp.setText(h+":00");
             }
         });
@@ -71,7 +74,6 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         timePlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                int hours = c.get(Calendar.HOUR_OF_DAY);
                 TextView temp = (TextView) findViewById(R.id.textView);
                 int h = Integer.parseInt(temp.getText().toString().split(":")[0]);
                 h = h+1 > 24? h:h+1;
