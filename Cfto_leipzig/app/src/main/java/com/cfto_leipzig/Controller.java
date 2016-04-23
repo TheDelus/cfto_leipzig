@@ -19,12 +19,14 @@ public class Controller {
     MetarLoaderManager mlm;
     AirportParser ap;
     AirportLocator al;
+    xml_parser xl;
 
     public Controller(mainActivity mainActivity) {
         this.mainActivity = mainActivity;
         mlm = new MetarLoaderManager(mainActivity);
         ap = new AirportParser(mainActivity);
         al = new AirportLocator(getAirports());
+        xl = new xml_parser(mainActivity);
 
         //ap.getAirports();
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WeatherConditionRules>
+
+	<ruleset mode="intensity">
+		<rule des="isLight" impact="0"/>
+		<rule des="isModerate" impact="1"/>
+		<rule des="isHeavy" impact="2"/>
+	</ruleset>
+
+	<ruleset mode="descriptor">
+		<rule des="isShallow" impact="0"/>
+		<rule des="isPartial" impact="0"/>
+		<rule des="isPatches" impact="0"/>
+		<rule des="isLowDrifting" impact="0"/>
+		<rule des="isBlowing" impact="0"/>
+		<rule des="isShowers" impact="1"/>
+		<rule des="isThunderstorms" impact="2"/>
+		<rule des="isFreezing" impact="2"/>
+	</ruleset>
+
+	<ruleset mode="phenomena">
+		<rule des="isDrizzle" impact="0"/>
+		<rule des="isRain" impact="1"/>
+		<rule des="isSnow" impact="2"/>
+		<rule des="isSnowGrains" impact="1"/>
+		<rule des="isIceCrystals" impact="1"/>
+		<rule des="isIcePellets" impact="1"/>
+		<rule des="isHail" impact="2"/>
+		<rule des="isSmallHail" impact="1"/>
+		<rule des="isUnknownPrecpitation" impact="0"/>
+		<rule des="isMist" impact="1"/>
+		<rule des="isFog" impact="1"/>
+		<rule des="isSmoke" impact="2"/>
+		<rule des="isVolcanicAsh" impact="2"/>
+		<rule des="isWidespreadDust" impact="1"/>
+		<rule des="isSand" impact="0"/>
+		<rule des="isHaze" impact="1"/>
+		<rule des="isSpray" impact="1"/>
+		<rule des="isDustSandWhirls" impact="2"/>
+		<rule des="isSqualls" impact="2"/>
+		<rule des="isSandstorm" impact="2"/>
+		<rule des="isDuststorm" impact="2"/>
+		<rule des="isFunnelCloud" impact="2"/>
+		<rule des="isTornado" impact="2"/>
+		<rule des="isWaterspout" impact="2"/>
+	</ruleset>
+
+</WeatherConditionRules>
+
+
+

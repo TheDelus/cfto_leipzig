@@ -1,11 +1,16 @@
 package com.cfto_leipzig;
 
+import android.content.Context;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -16,17 +21,23 @@ import javax.xml.parsers.DocumentBuilderFactory;
  */
 public class xml_parser {
 
-    public static void parse_hash() {
+    Context main;
+
+    public xml_parser(mainActivity mainActivity) {
 
 
         HashMap<String,Integer> hmap = new HashMap<String, Integer>();
 
         try {
 
-            File fXmlFile = new File("/Users/Lina/StudioProjects/cfto_leipzig/Cfto_leipzig/app/src/main/res/xml/impactRules.xml");
+            InputStream xmlRes = main.getResources().openRawResource(R.raw.impactrules);
+            Reader r = new InputStreamReader(xmlRes);
+            BufferedReader in = new BufferedReader(r);
+
+            //File fXmlFile = new File("impactRules.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(fXmlFile);
+            Document doc = dBuilder.parse(xmlRes);
 
             //optional, but recommended
             //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
