@@ -6,6 +6,8 @@ import android.util.Log;
 import com.cfto_leipzig.metarparser.Loader.MetarLoaderManager;
 import com.cfto_leipzig.metarparser.Metar;
 
+import java.util.ArrayList;
+
 /**
  * Created by TheDelus on 23.04.2016.
  */
@@ -15,10 +17,14 @@ public class Controller {
     private static final String LOG_TAG = "Controller";
     mainActivity mainActivity;
     MetarLoaderManager mlm;
+    AirportParser ap;
 
     public Controller(mainActivity mainActivity) {
         this.mainActivity = mainActivity;
         mlm = new MetarLoaderManager(mainActivity);
+        ap = new AirportParser(mainActivity);
+
+        //ap.getAirports();
 
     }
 
@@ -40,6 +46,9 @@ public class Controller {
         } else {
             return null;
         }
+    }
 
+    public ArrayList<Airport> getAirports() {
+        return ap.getAirports();
     }
 }
