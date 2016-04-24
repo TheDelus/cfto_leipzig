@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Button;
@@ -63,7 +64,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         int hours = c.get(Calendar.HOUR_OF_DAY)+1;
         time.setText(hours + ":00");
 
-        ImageButton info = (ImageButton) findViewById(R.id.imageButton2);
+        ImageView info = (ImageView) findViewById(R.id.imageButton2);
         info.setImageResource(R.drawable.information);
 
         info.setOnClickListener(new View.OnClickListener() {
@@ -90,9 +91,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         tv_iata_arr = (TextView) findViewById(R.id.iata_arr);
 
 
-        final String[] t = new String[2];
-        t[0] = "heavy rain";
-        t[1] = "cloudy";
+        final String t = "heavy rain\ncloudy";
 
         editTexts.add(ed_depart);
         editTexts.add(ed_arriv);
@@ -197,7 +196,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             LocationLatitude = mLastLocation.getLatitude();
             LocationLongitude = mLastLocation.getLongitude();
 
-            weacont.getWeather(LocationLatitude, LocationLongitude, "14");
+            //weacont.getWeather(LocationLatitude, LocationLongitude, "14");
 
             Log.i(LOG_KEY, ""+LocationLatitude);
             Log.i(LOG_KEY, ""+LocationLongitude);
