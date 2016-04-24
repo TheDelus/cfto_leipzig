@@ -20,11 +20,11 @@ For more information, please email arimus@users.sourceforge.net
 */
 package com.cfto_leipzig.metarparser;
 
-import java.util.Date;
-import java.util.TimeZone;
-import java.util.ArrayList;
-import java.util.Iterator;
 import org.apache.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Responsible for storing METAR data and providing methods for accessing the data
@@ -38,6 +38,8 @@ import org.apache.log4j.Logger;
  * @see <a href="WeatherCondition.html">WeatherCondition</a>
  */
 public class Metar {
+
+    //hallo ist das jetzt der richitge Account?
     Logger log;
 
     String dateString = "";
