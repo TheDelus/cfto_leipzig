@@ -17,6 +17,7 @@ public class logic {
     private Metar metarArr;
     private HashMap<String, Integer> hmap;
 
+
     public int logiSigWeather(String weather){
 
         Log.i(LOG_KEY, ""+hmap.size());
@@ -24,6 +25,7 @@ public class logic {
         String[] stringArr = new String[3];
 
         int impactvalue = 0;
+        double calcMPH = 1.15078;
 
         stringArr = weather.split(" ");
 
@@ -32,6 +34,31 @@ public class logic {
         String phenomena = stringArr[2];
 
         Set<String> keys = hmap.keySet();
+
+
+        float windSpe = metarDep.getWindSpeedInKnots();
+
+        double inMPH = windSpe * calcMPH;
+
+        if(inMPH > 100){
+            impactvalue += 3;
+        }
+
+        float windSpe2 = metarArr.getWindSpeedInKnots();
+
+        double inMPH2 = windSpe2 * calcMPH;
+
+        if(inMPH2 > 45){
+            impactvalue += 3;
+        }
+
+        if(metarDep.getTemperatureInCelsius() < 0 || metarArr.getTemperatureInCelsius() < 0){
+            impactvalue += 2;
+        }
+
+        if(metarDep.getVisibilityInKilometers() > 1 || metarArr.getVisibilityInKilometers() < 1){
+            impactvalue += 2;
+        }
 
         for(String key:keys){
             if(key.equals(intensity)){
@@ -52,7 +79,7 @@ public class logic {
     public int percentProbability(int impactvalue){
         int percentage = 0;
 
-        percentage = impactvalue * 16;
+        percentage = (impactvalue) * 16;
         return percentage;
 
     }
@@ -64,6 +91,8 @@ public class logic {
     public void setMetarArr(Metar metarArr) {
         this.metarArr = metarArr;
     }
+
+
 
     public int calculatePerc() {
         return (logiSigWeather(metarToString(metarDep)) + logiSigWeather(metarToString(metarArr)))/2;
