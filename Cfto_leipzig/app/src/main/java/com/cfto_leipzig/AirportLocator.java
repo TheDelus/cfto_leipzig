@@ -59,7 +59,7 @@ public class AirportLocator {
 
         for(int i = 0; i < airports.size(); i++)
         {
-            if(airports.get(i).getAirportName().contains(name) || airports.get(i).getIata().equals(name)) {
+            if(airports.get(i).getCityName().equals(name) || airports.get(i).getAirportName().contains(name) || airports.get(i).getIata().equals(name)) {
                 return airports.get(i).getIata();
             }
         }

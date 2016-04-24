@@ -17,17 +17,19 @@ public class Controller {
     private static final int METAR_LOADER_DEP = 0;
     private static final int METAR_LOADER_ARR = 1;
     private static final String LOG_TAG = "Controller";
-    mainActivity mainActivity;
-    MetarLoaderManager mlm_dep;
-    MetarLoaderManager mlm_arr;
+    private mainActivity mainActivity;
+    private MetarLoaderManager mlm_dep;
+    private MetarLoaderManager mlm_arr;
 
-    AirportParser ap;
-    AirportLocator al;
-    xml_parser xl;
-    logic logic;
+    private AirportParser ap;
+    private AirportLocator al;
+    private xml_parser xl;
+    private logic logic;
 
-    String iata_dep;
-    String iata_arr;
+    private String iata_dep;
+    private String iata_arr;
+
+    private int time;
 
     public Controller(mainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -129,5 +131,13 @@ public class Controller {
         perc = logic.calculatePerc();
 
         return perc;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getTime() {
+        return time;
     }
 }
