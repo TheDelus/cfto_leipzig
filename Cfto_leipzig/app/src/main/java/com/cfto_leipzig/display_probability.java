@@ -53,7 +53,7 @@ public class display_probability extends AppCompatActivity {
         });
         TextView prob = (TextView) findViewById(R.id.textView2);
         prob.setTextColor(Color.WHITE);
-        prob.setText(String.valueOf(probability));
+        prob.setText(String.valueOf(probability)+"%");
 
     }
 }

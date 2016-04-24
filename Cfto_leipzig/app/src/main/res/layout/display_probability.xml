@@ -21,11 +21,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="12,5%"
         android:id="@+id/textView2"
-        android:layout_marginTop="146dp"
+        android:layout_marginTop="142dp"
         android:textSize="40dp"
         android:layout_below="@+id/button4"
-        android:layout_alignRight="@+id/textView3"
-        android:layout_alignEnd="@+id/textView3" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
