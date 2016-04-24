@@ -31,7 +31,6 @@ public class display_probability extends AppCompatActivity {
         else green = (int)(255 * (1 - (tempProb-50)/50));
         back.setBackgroundColor(Color.parseColor("#"+Integer.toHexString(red)+Integer.toHexString(green)+"00"));
 
-
         info.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="GEN_FOLDER_RELATIVE_PATH_APT" value="/../Cfto_leipzig/app/build/generated" />
+        <option name="GEN_FOLDER_RELATIVE_PATH_AIDL" value="/../Cfto_leipzig/app/build" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../Cfto_leipzig/app/src/main/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../Cfto_leipzig/app/src/main/res" />
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
-    <orderEntry type="inheritedJdk" />
+    <content url="file://$MODULE_DIR$/Cfto_leipzig">
+      <sourceFolder url="file://$MODULE_DIR$/Cfto_leipzig/app/src/test/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Cfto_leipzig/app/src/androidTest/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Cfto_leipzig/app/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Cfto_leipzig/app/build/generated" isTestSource="false" generated="true" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 15 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

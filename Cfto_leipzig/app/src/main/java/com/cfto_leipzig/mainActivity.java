@@ -100,25 +100,23 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             @Override
             public void onClick(View v) {
                 if(!tv_iata_arr.getText().toString().equals("-") &&
-                        !tv_iata_arr.getText().toString().equals("-")) {
+                        !tv_iata_depart.getText().toString().equals("-") &&
+                        !tv_iata_arr.getText().toString().equals("Airport not found!") &&
+                        !tv_iata_depart.getText().toString().equals("Airport not found!")) {
                     Intent intent = new Intent(mainActivity.this, display_probability.class);
-                    String infoMsg = "";
-
 
                     cont.setIata_dep(tv_iata_depart.getText().toString());
                     cont.setIata_arr(tv_iata_arr.getText().toString());
-                    //cont.setTime();
 
-                    if(cont.getMetarDataDep().getWeatherConditions().size() > 0)
-                        infoMsg += cont.getMetarDataDep().getWeatherCondition(0).getNaturalLanguageString() + "\n";
+                    InfoMsgBuilder msgBuilder = new InfoMsgBuilder();
 
-                    if(cont.getMetarDataArr().getWeatherConditions().size() > 0)
-                        infoMsg += cont.getMetarDataArr().getWeatherCondition(0).getNaturalLanguageString() + "\n";
-
-                    Log.i(LOG_KEY, "" + cont.computeSigWeather(cont.getMetarDataDep(), cont.getMetarDataArr()));
+                    msgBuilder.addString(cont.getAiportNameByIATA(cont.getIata_dep()) + ":");
+                    msgBuilder.addMetarWeatherMsg(cont.getMetarDataDep());
+                    msgBuilder.addStringNewLine(cont.getAiportNameByIATA(cont.getIata_arr()) + ":");
+                    msgBuilder.addMetarWeatherMsg(cont.getMetarDataArr());
 
                     intent.putExtra("prob", cont.computeSigWeather(cont.getMetarDataDep(),cont.getMetarDataArr()));
-                    intent.putExtra("info", infoMsg);
+                    intent.putExtra("info", msgBuilder.getMsg());
                     startActivity(intent);
                 } else {
                     Toast toast = Toast.makeText(cont.getMainActivity(), "Please input airports", Toast.LENGTH_SHORT);
@@ -233,11 +231,6 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             LocationLongitude = mLastLocation.getLongitude();
 
             //weacont.getWeather(LocationLatitude, LocationLongitude, "14");
-
-            Log.i(LOG_KEY, ""+LocationLatitude);
-            Log.i(LOG_KEY, ""+LocationLongitude);
-
-            //Log.i(LOG_KEY, cont.getNearestAirport(LocationLatitude, LocationLongitude));
 
             nearestAirpotIATA = cont.getNearestAirport(LocationLatitude, LocationLongitude);
 
