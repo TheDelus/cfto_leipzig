@@ -110,10 +110,17 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
 
                     InfoMsgBuilder msgBuilder = new InfoMsgBuilder();
 
-                    msgBuilder.addString(cont.getAiportNameByIATA(cont.getIata_dep()) + ":");
+                    msgBuilder.addString(cont.getAiportNameByIATA(cont.getIata_dep()) + ": ");
+                    msgBuilder.addMetarTemperature(cont.getMetarDataDep());
+                    msgBuilder.addMetarVisibility(cont.getMetarDataDep());
                     msgBuilder.addMetarWeatherMsg(cont.getMetarDataDep());
-                    msgBuilder.addStringNewLine(cont.getAiportNameByIATA(cont.getIata_arr()) + ":");
+                    msgBuilder.addMetarCloudMsg(cont.getMetarDataDep());
+                    msgBuilder.addStringNewLine("");
+                    msgBuilder.addStringNewLine(cont.getAiportNameByIATA(cont.getIata_arr()) + ": ");
+                    msgBuilder.addMetarTemperature(cont.getMetarDataArr());
+                    msgBuilder.addMetarVisibility(cont.getMetarDataArr());
                     msgBuilder.addMetarWeatherMsg(cont.getMetarDataArr());
+                    msgBuilder.addMetarCloudMsg(cont.getMetarDataArr());
 
                     intent.putExtra("prob", cont.computeSigWeather(cont.getMetarDataDep(),cont.getMetarDataArr()));
                     intent.putExtra("info", msgBuilder.getMsg());

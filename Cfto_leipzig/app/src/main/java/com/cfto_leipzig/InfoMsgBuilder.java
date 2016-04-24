@@ -17,7 +17,7 @@ public class InfoMsgBuilder {
     }
 
     public void addStringNewLine(String stringToAdd) {
-        msg += "\r" + stringToAdd;
+        msg += "\n" + stringToAdd;
     }
 
     public void addStringSpace(String stringToAdd) {
@@ -26,6 +26,26 @@ public class InfoMsgBuilder {
 
     public void addMetarWeatherMsg(Metar metar) {
         if( metar.getWeatherConditions().size() > 0)
-            msg += "\r" + metar.getWeatherCondition(0).getNaturalLanguageString();
+            msg += "\n" + metar.getWeatherCondition(0).getNaturalLanguageString();
+        else msg += "\n" + "No significant weather detected!";
+    }
+
+    public void addMetarCloudMsg(Metar metar) {
+        if( metar.getSkyConditions().size() > 0)
+            msg += "\n" + metar.getSkyCondition(0).getNaturalLanguageString();
+        else msg += "\n" + "No significant clouds detected!";
+    }
+
+    public void addMetarTemperature(Metar metar) {
+        if( metar.getTemperatureInCelsius() != null)
+            msg += "\n" + "Temperature: " + metar.getTemperatureInCelsius() + "°C";
+    }
+
+    public void addMetarVisibility(Metar metar) {
+        if( metar.getVisibilityInKilometers() != null)
+            if(metar.getVisibilityInKilometers() > 6)
+                msg += "\n" + "Visibility: " + ">10km";
+            else
+                msg += "\n" + "Visibility: " + metar.getVisibilityInKilometers() + "km";
     }
 }
