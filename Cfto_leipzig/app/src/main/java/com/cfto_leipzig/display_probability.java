@@ -23,15 +23,15 @@ public class display_probability extends AppCompatActivity {
         int probability = i.getIntExtra("prob", 0);
         final String text = i.getStringExtra("info");
         TextView info = (TextView) findViewById(R.id.textView3);
-        probability = 10;
+        probability = 80;
         double tempProb = probability;
 
         View back = info.getRootView();
         int red = 255, green = 255;
         if(probability <= 50)red = (int)(255 * (tempProb/50));
         else green = (int)(255 * (1 - (tempProb-50)/50));
+        back.setBackgroundColor(Color.parseColor("#"+Integer.toHexString(red)+Integer.toHexString(green)+"00"));
 
-        back.setBackgroundColor(Color.parseColor("#"+Integer.valueOf(String.valueOf(red), 16)+Integer.valueOf(String.valueOf(green), 16)+"00"));
 
         info.setOnClickListener(new View.OnClickListener(){
             @Override
