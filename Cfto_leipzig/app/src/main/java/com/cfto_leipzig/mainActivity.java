@@ -102,22 +102,24 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             public void onClick(View v) {
                 if(!tv_iata_arr.getText().toString().equals("-") &&
                         !tv_iata_arr.getText().toString().equals("-")) {
+                    Intent intent = new Intent(mainActivity.this, display_probability.class);
+                    String infoMsg = "";
+
 
                     cont.setIata_dep(tv_iata_depart.getText().toString());
                     cont.setIata_arr(tv_iata_arr.getText().toString());
                     //cont.setTime();
 
                     if(cont.getMetarDataDep().getWeatherConditions().size() > 0)
-                        Log.i(LOG_KEY, "" + cont.getMetarDataDep().getWeatherCondition(0).getNaturalLanguageString());
+                        infoMsg += cont.getMetarDataDep().getWeatherCondition(0).getNaturalLanguageString() + "\n";
 
                     if(cont.getMetarDataArr().getWeatherConditions().size() > 0)
-                        Log.i(LOG_KEY, "" + cont.getMetarDataArr().getWeatherCondition(0).getNaturalLanguageString());
+                        infoMsg += cont.getMetarDataArr().getWeatherCondition(0).getNaturalLanguageString() + "\n";
 
                     Log.i(LOG_KEY, "" + cont.computeSigWeather(cont.getMetarDataDep(), cont.getMetarDataArr()));
 
-                    Intent intent = new Intent(mainActivity.this, display_probability.class);
                     intent.putExtra("prob", cont.computeSigWeather(cont.getMetarDataDep(),cont.getMetarDataArr()));
-                    intent.putExtra("info", t);
+                    intent.putExtra("info", infoMsg);
                     startActivity(intent);
                 } else {
                     Toast toast = Toast.makeText(cont.getMainActivity(), "Please input airports", Toast.LENGTH_SHORT);
@@ -134,6 +136,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
                 int hours = c.get(Calendar.HOUR_OF_DAY);
                 int h = Integer.parseInt(time.getText().toString().split(":")[0]);
                 h = h-2 < hours? h:h-1;
+                cont.setTime(h);
                 time.setText(h+":00");
             }
         });
@@ -144,6 +147,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
                 TextView temp = (TextView) findViewById(R.id.textView);
                 int h = Integer.parseInt(temp.getText().toString().split(":")[0]);
                 h = h+1 > 24? h:h+1;
+                cont.setTime(h);
                 temp.setText(h+":00");
             }
         });
