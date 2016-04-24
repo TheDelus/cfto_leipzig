@@ -22,13 +22,15 @@ public class display_probability extends AppCompatActivity {
         int probability = i.getIntExtra("prob",0);
         final String text = i.getStringExtra("info");
         TextView info = (TextView) findViewById(R.id.textView3);
-
         ImageView back = (ImageView) findViewById(R.id.imageView);
+
+        if(probability > 50)back.setBackgroundColor(Color.RED);
+        else if(probability < 25)back.setBackgroundColor(Color.GREEN);
+        else back.setBackgroundColor(Color.YELLOW);
 
         info.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //alert
                 new AlertDialog.Builder(display_probability.this)
                         .setTitle("Info")
                         .setMessage(text)
@@ -50,9 +52,6 @@ public class display_probability extends AppCompatActivity {
         });
         TextView prob = (TextView) findViewById(R.id.textView2);
         prob.setTextColor(Color.WHITE);
-        if(probability > 50)back.setBackgroundColor(Color.RED);
-        else if(probability < 25)back.setBackgroundColor(Color.GREEN);
-        else back.setBackgroundColor(Color.YELLOW);
         prob.setText(String.valueOf(probability));
 
     }
