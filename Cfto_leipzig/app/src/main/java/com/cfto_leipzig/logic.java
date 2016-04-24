@@ -53,12 +53,16 @@ public class logic {
             impactvalue += 2.5;
         }
 
-        if(metarDep.getTemperatureInCelsius() < 0 || metarArr.getTemperatureInCelsius() < 0){
-            impactvalue += 1;
+        if(metarDep.getTemperatureInCelsius() != null && metarArr.getTemperatureInCelsius() != null) {
+            if (metarDep.getTemperatureInCelsius() < 0 || metarArr.getTemperatureInCelsius() < 0) {
+                impactvalue += 1;
+            }
         }
 
-        if(metarDep.getVisibilityInKilometers() > 1 || metarArr.getVisibilityInKilometers() < 1){
-            impactvalue += 1.5;
+        if(metarDep.getVisibilityInKilometers() != null && metarArr.getVisibilityInKilometers() != null) {
+            if (metarDep.getVisibilityInKilometers() > 1 || metarArr.getVisibilityInKilometers() < 1) {
+                impactvalue += 1.5;
+            }
         }
 
         if(7 < this.timei && 12 > this.timei || 16 < this.timei && 20 > this.timei){
