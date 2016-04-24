@@ -19,11 +19,12 @@ public class display_probability extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_probability);
         Intent i = getIntent();
-        int probability = i.getIntExtra("prob",0);
+        int probability = i.getIntExtra("prob", 0);
         final String text = i.getStringExtra("info");
         TextView info = (TextView) findViewById(R.id.textView3);
 
         View back = info.getRootView();
+
 
         if(probability > 50)back.setBackgroundColor(Color.RED);
         else if(probability < 25)back.setBackgroundColor(Color.GREEN);

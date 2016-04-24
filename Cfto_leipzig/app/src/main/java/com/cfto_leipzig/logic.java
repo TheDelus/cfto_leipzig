@@ -150,7 +150,7 @@ public class logic {
             } else if (metar.getWeatherCondition(0).isDuststorm()) {
                 phenomena += " Duststorm";
             }
-
+            Log.i(LOG_KEY, intensity + descriptor + phenomena);
             return intensity + descriptor + phenomena;
         } else {
             return "x x x";

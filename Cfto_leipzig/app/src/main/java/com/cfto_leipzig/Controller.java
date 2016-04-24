@@ -111,9 +111,11 @@ public class Controller {
     public String getAiportIATAByName(String name) {
         return al.getAirportIATAByName(name);
     }
+
     public String getAirportICAOByIATA(String iata) {
         return al.getICAOByIATA(iata);
     }
+
     public com.cfto_leipzig.mainActivity getMainActivity() {
         return mainActivity;
     }
@@ -123,6 +125,7 @@ public class Controller {
 
         logic.setMetarDep(weatherDep);
         logic.setMetarArr(weatherArr);
+
         perc = logic.calculatePerc();
 
         return perc;
