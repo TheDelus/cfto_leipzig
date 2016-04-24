@@ -93,7 +93,6 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         tv_iata_depart = (TextView) findViewById(R.id.iata_depart);
         tv_iata_arr = (TextView) findViewById(R.id.iata_arr);
 
-        final String t = "heavy rain\ncloudy";
         editTexts.add(ed_depart);
         editTexts.add(ed_arriv);
 

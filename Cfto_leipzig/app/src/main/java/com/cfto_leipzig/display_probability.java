@@ -23,7 +23,6 @@ public class display_probability extends AppCompatActivity {
         int probability = i.getIntExtra("prob", 0);
         final String text = i.getStringExtra("info");
         TextView info = (TextView) findViewById(R.id.textView3);
-        probability = 80;
         double tempProb = probability;
 
         View back = info.getRootView();
