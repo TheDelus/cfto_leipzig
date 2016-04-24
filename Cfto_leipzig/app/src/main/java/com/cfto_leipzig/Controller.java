@@ -42,6 +42,7 @@ public class Controller {
 
         logic = new logic();
         logic.setRules(rules);
+        logic.setTime(time);
 
         //ap.getAirports();
 
@@ -135,6 +136,7 @@ public class Controller {
 
     public void setTime(int time) {
         this.time = time;
+        logic.setTime(time);
     }
 
     public int getTime() {

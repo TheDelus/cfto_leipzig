@@ -15,16 +15,17 @@ public class logic {
     private static final String LOG_KEY = "logic";
     private Metar metarDep;
     private Metar metarArr;
+    private int timei;
     private HashMap<String, Integer> hmap;
 
 
     public int logiSigWeather(String weather){
 
-        Log.i(LOG_KEY, ""+hmap.size());
+
 
         String[] stringArr = new String[3];
 
-        int impactvalue = 0;
+        double impactvalue = 0;
         double calcMPH = 1.15078;
 
         stringArr = weather.split(" ");
@@ -41,7 +42,7 @@ public class logic {
         double inMPH = windSpe * calcMPH;
 
         if(inMPH > 100){
-            impactvalue += 3;
+            impactvalue += 2.5;
         }
 
         float windSpe2 = metarArr.getWindSpeedInKnots();
@@ -49,15 +50,19 @@ public class logic {
         double inMPH2 = windSpe2 * calcMPH;
 
         if(inMPH2 > 45){
-            impactvalue += 3;
+            impactvalue += 2.5;
         }
 
         if(metarDep.getTemperatureInCelsius() < 0 || metarArr.getTemperatureInCelsius() < 0){
-            impactvalue += 2;
+            impactvalue += 1;
         }
 
         if(metarDep.getVisibilityInKilometers() > 1 || metarArr.getVisibilityInKilometers() < 1){
-            impactvalue += 2;
+            impactvalue += 1.5;
+        }
+
+        if(7 < this.timei && 12 > this.timei || 16 < this.timei && 20 > this.timei){
+            impactvalue += 0.5;
         }
 
         for(String key:keys){
@@ -72,14 +77,16 @@ public class logic {
             }
 
         }
-        System.out.println(impactvalue);
+        Log.i(LOG_KEY, ""+impactvalue);
         return percentProbability(impactvalue);
     }
 
-    public int percentProbability(int impactvalue){
-        int percentage = 0;
+    public int percentProbability(double impactvalue){
 
-        percentage = (impactvalue) * 16;
+        int percentage = (int) Math.round((impactvalue) * 12.5);
+        if(percentage > 100){
+            percentage = 100;
+        }
         return percentage;
 
     }
@@ -92,6 +99,10 @@ public class logic {
         this.metarArr = metarArr;
     }
 
+    public void setTime(int time){
+        this.timei = time;
+
+    }
 
 
     public int calculatePerc() {
