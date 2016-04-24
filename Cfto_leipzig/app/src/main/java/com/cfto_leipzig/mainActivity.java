@@ -28,6 +28,8 @@ import java.util.Calendar;
 public class mainActivity extends AppCompatActivity implements ConnectionCallbacks {
 
     private static final String LOG_KEY = "Main";
+    private static final int DEPART = 0;
+    private static final int ARR = 1;
     /**
      * Provides the entry point to Google Play services.
      */
@@ -90,19 +92,30 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         tv_iata_depart = (TextView) findViewById(R.id.iata_depart);
         tv_iata_arr = (TextView) findViewById(R.id.iata_arr);
 
-
         final String t = "heavy rain\ncloudy";
-
         editTexts.add(ed_depart);
         editTexts.add(ed_arriv);
 
     search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mainActivity.this, display_probability.class);
-                intent.putExtra("prob",100);
-                intent.putExtra("info", t);
-                startActivity(intent);
+                if(!tv_iata_arr.getText().toString().equals("-") &&
+                        !tv_iata_arr.getText().toString().equals("-")) {
+
+                    cont.setIata_dep(tv_iata_depart.getText().toString());
+                    cont.setIata_arr(tv_iata_arr.getText().toString());
+
+                    Log.i(LOG_KEY, "" + cont.getMetarDataDep().getTemperatureInCelsius());
+                    Log.i(LOG_KEY, "" + cont.getMetarDataArr().getTemperatureInCelsius());
+
+                    Intent intent = new Intent(mainActivity.this, display_probability.class);
+                    intent.putExtra("prob", 100);
+                    intent.putExtra("info", t);
+                    startActivity(intent);
+                } else {
+                    Toast toast = Toast.makeText(cont.getMainActivity(), "Please input airports", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
         Button timeMinus = (Button) findViewById(R.id.button);
@@ -146,13 +159,27 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
                     //Apply general behavior for all editTexts
 
                     if (editText == editTexts.get(0)) {
-                        departAirpotIATA = cont.getAiportIATAByName(editText.getText().toString());
-                        tv_iata_depart.setText(departAirpotIATA);
+                        if(!editText.getText().toString().equals(departAirpotIATA)) {
+
+                            departAirpotIATA = cont.getAiportIATAByName(editText.getText().toString());
+                            tv_iata_depart.setText(departAirpotIATA);
+
+                            if(departAirpotIATA.length() == 3) {
+                                cont.fetchMetarData(cont.getAirportICAOByIATA(departAirpotIATA), DEPART);
+                            }
+                        }
                     }
 
                     if (editText == editTexts.get(1)) {
-                        arrAirpotIATA = cont.getAiportIATAByName(editText.getText().toString());
-                        tv_iata_arr.setText(arrAirpotIATA);
+                        if(!editText.getText().toString().equals(arrAirpotIATA)) {
+
+                            arrAirpotIATA = cont.getAiportIATAByName(editText.getText().toString());
+                            tv_iata_arr.setText(arrAirpotIATA);
+
+                            if(arrAirpotIATA.length() == 3) {
+                                cont.fetchMetarData(cont.getAirportICAOByIATA(arrAirpotIATA), ARR);
+                            }
+                        }
                     }
                 }
             });
@@ -206,7 +233,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             nearestAirpotIATA = cont.getNearestAirport(LocationLatitude, LocationLongitude);
 
             ed_depart.setText(cont.getAiportNameByIATA(nearestAirpotIATA));
-            cont.fetchMetarData(cont.getAirportICAOByIATA(nearestAirpotIATA));
+            //cont.fetchMetarData(cont.getAirportICAOByIATA(nearestAirpotIATA));
 
         }
     }
