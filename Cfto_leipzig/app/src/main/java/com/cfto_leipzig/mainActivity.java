@@ -7,20 +7,24 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
-public class mainActivity extends AppCompatActivity implements ConnectionCallbacks{
+public class mainActivity extends AppCompatActivity implements ConnectionCallbacks {
 
     private static final String LOG_KEY = "Main";
     /**
@@ -33,8 +37,15 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
      */
     protected Location mLastLocation;
 
-    EditText ed;
+    EditText ed_depart;
+    EditText ed_arriv;
+    TextView tv_iata_depart;
+    TextView tv_iata_arr;
+    ArrayList<EditText> editTexts = new ArrayList<>(); // Container list
+
     String nearestAirpotIATA;
+    String departAirpotIATA;
+    String arrAirpotIATA;
 
     public double LocationLongitude = 0.;
     public double LocationLatitude = 0.;
@@ -71,11 +82,21 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         });
 
         Button search = (Button) findViewById(R.id.button3);
-        ed = (EditText) findViewById(R.id.editText);
+        ed_depart = (EditText) findViewById(R.id.editText);
+        ed_arriv = (EditText) findViewById(R.id.editText2);
+
+        tv_iata_depart = (TextView) findViewById(R.id.iata_depart);
+        tv_iata_arr = (TextView) findViewById(R.id.iata_arr);
+
+
         final String[] t = new String[2];
         t[0] = "heavy rain";
         t[1] = "cloudy";
-        search.setOnClickListener(new View.OnClickListener() {
+
+        editTexts.add(ed_depart);
+        editTexts.add(ed_arriv);
+
+    search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mainActivity.this, display_probability.class);
@@ -107,6 +128,36 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
                 temp.setText(h+":00");
             }
         });
+
+        for (final EditText editText : editTexts) { //need to be final for custom behaviors
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    //Apply general behavior for all editTexts
+
+                    if (editText == editTexts.get(0)) {
+                        departAirpotIATA = cont.getAiportIATAByName(editText.getText().toString());
+                        tv_iata_depart.setText(departAirpotIATA);
+                    }
+
+                    if (editText == editTexts.get(1)) {
+                        arrAirpotIATA = cont.getAiportIATAByName(editText.getText().toString());
+                        tv_iata_arr.setText(arrAirpotIATA);
+                    }
+                }
+            });
+
+        }
 
         buildGoogleApiClient();
     }
@@ -152,7 +203,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
 
             nearestAirpotIATA = cont.getNearestAirport(LocationLatitude, LocationLongitude);
 
-            ed.setText(cont.getAiportNameByIATA(nearestAirpotIATA));
+            ed_depart.setText(cont.getAiportNameByIATA(nearestAirpotIATA));
             cont.fetchMetarData(cont.getAirportICAOByIATA(nearestAirpotIATA));
 
         }

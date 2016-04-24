@@ -1,11 +1,14 @@
 package com.cfto_leipzig;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
  * Created by TheDelus on 23.04.2016.
  */
 public class AirportLocator {
+    private static final String LOG_KEY = "AirportLocator";
     String iata;
     ArrayList<Airport> airports;
     double bestDistance = Double.MAX_VALUE;
@@ -50,5 +53,17 @@ public class AirportLocator {
         }
 
         return "null";
+    }
+
+    public String getAirportIATAByName(String name) {
+
+        for(int i = 0; i < airports.size(); i++)
+        {
+            if(airports.get(i).getAirportName().contains(name) || airports.get(i).getIata().equals(name)) {
+                return airports.get(i).getIata();
+            }
+        }
+
+        return "Airport not found!";
     }
 }

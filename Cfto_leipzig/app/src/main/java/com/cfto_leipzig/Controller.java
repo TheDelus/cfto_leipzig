@@ -74,6 +74,11 @@ public class Controller {
         return al.getAirportNameByIATA(iata);
     }
 
+    public String getAiportIATAByName(String name) {
+        return al.getAirportIATAByName(name);
+    }
+
+
     public String getAirportICAOByIATA(String iata) {
         return al.getICAOByIATA(iata);
     }
