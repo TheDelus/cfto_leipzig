@@ -44,6 +44,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
     EditText ed_arriv;
     TextView tv_iata_depart;
     TextView tv_iata_arr;
+    TextView time;
     ArrayList<EditText> editTexts = new ArrayList<>(); // Container list
 
     String nearestAirpotIATA;
@@ -62,7 +63,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         setContentView(R.layout.mainactivity);
         cont = new Controller(this);
 
-        TextView time = (TextView) findViewById(R.id.textView);
+        time = (TextView) findViewById(R.id.textView);
         int hours = c.get(Calendar.HOUR_OF_DAY)+1;
         time.setText(hours + ":00");
 
@@ -104,6 +105,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
 
                     cont.setIata_dep(tv_iata_depart.getText().toString());
                     cont.setIata_arr(tv_iata_arr.getText().toString());
+                    //cont.setTime();
 
                     if(cont.getMetarDataDep().getWeatherConditions().size() > 0)
                         Log.i(LOG_KEY, "" + cont.getMetarDataDep().getWeatherCondition(0).getNaturalLanguageString());
@@ -111,7 +113,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
                     if(cont.getMetarDataArr().getWeatherConditions().size() > 0)
                         Log.i(LOG_KEY, "" + cont.getMetarDataArr().getWeatherCondition(0).getNaturalLanguageString());
 
-                    Log.i(LOG_KEY, "" + cont.computeSigWeather(cont.getMetarDataDep(),cont.getMetarDataArr()));
+                    Log.i(LOG_KEY, "" + cont.computeSigWeather(cont.getMetarDataDep(), cont.getMetarDataArr()));
 
                     Intent intent = new Intent(mainActivity.this, display_probability.class);
                     intent.putExtra("prob", cont.computeSigWeather(cont.getMetarDataDep(),cont.getMetarDataArr()));
@@ -130,10 +132,9 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
             @Override
             public void onClick(View v){
                 int hours = c.get(Calendar.HOUR_OF_DAY);
-                TextView temp = (TextView) findViewById(R.id.textView);
-                int h = Integer.parseInt(temp.getText().toString().split(":")[0]);
+                int h = Integer.parseInt(time.getText().toString().split(":")[0]);
                 h = h-2 < hours? h:h-1;
-                temp.setText(h+":00");
+                time.setText(h+":00");
             }
         });
 

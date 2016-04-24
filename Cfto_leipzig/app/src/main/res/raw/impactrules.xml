@@ -2,47 +2,47 @@
 <WeatherConditionRules>
 
 	<ruleset mode="intensity">
-		<rule des="isLight" impact="0"/>
-		<rule des="isModerate" impact="1"/>
-		<rule des="isHeavy" impact="2"/>
+		<rule des="Light" impact="0"/>
+		<rule des="Moderate" impact="1"/>
+		<rule des="Heavy" impact="2"/>
 	</ruleset>
 
 	<ruleset mode="descriptor">
-		<rule des="isShallow" impact="0"/>
-		<rule des="isPartial" impact="0"/>
-		<rule des="isPatches" impact="0"/>
-		<rule des="isLowDrifting" impact="0"/>
-		<rule des="isBlowing" impact="0"/>
-		<rule des="isShowers" impact="1"/>
-		<rule des="isThunderstorms" impact="2"/>
-		<rule des="isFreezing" impact="2"/>
+		<rule des="Shallow" impact="0"/>
+		<rule des="Partial" impact="0"/>
+		<rule des="Patches" impact="0"/>
+		<rule des="LowDrifting" impact="0"/>
+		<rule des="Blowing" impact="0"/>
+		<rule des="Showers" impact="1"/>
+		<rule des="Thunderstorms" impact="2"/>
+		<rule des="Freezing" impact="2"/>
 	</ruleset>
 
 	<ruleset mode="phenomena">
-		<rule des="isDrizzle" impact="0"/>
-		<rule des="isRain" impact="1"/>
-		<rule des="isSnow" impact="2"/>
-		<rule des="isSnowGrains" impact="1"/>
-		<rule des="isIceCrystals" impact="1"/>
-		<rule des="isIcePellets" impact="1"/>
-		<rule des="isHail" impact="2"/>
-		<rule des="isSmallHail" impact="1"/>
-		<rule des="isUnknownPrecpitation" impact="0"/>
-		<rule des="isMist" impact="1"/>
-		<rule des="isFog" impact="1"/>
-		<rule des="isSmoke" impact="2"/>
-		<rule des="isVolcanicAsh" impact="2"/>
-		<rule des="isWidespreadDust" impact="1"/>
-		<rule des="isSand" impact="0"/>
-		<rule des="isHaze" impact="1"/>
-		<rule des="isSpray" impact="1"/>
-		<rule des="isDustSandWhirls" impact="2"/>
-		<rule des="isSqualls" impact="2"/>
-		<rule des="isSandstorm" impact="2"/>
-		<rule des="isDuststorm" impact="2"/>
-		<rule des="isFunnelCloud" impact="2"/>
-		<rule des="isTornado" impact="2"/>
-		<rule des="isWaterspout" impact="2"/>
+		<rule des="Drizzle" impact="0"/>
+		<rule des="Rain" impact="1"/>
+		<rule des="Snow" impact="2"/>
+		<rule des="SnowGrains" impact="1"/>
+		<rule des="IceCrystals" impact="1"/>
+		<rule des="IcePellets" impact="1"/>
+		<rule des="Hail" impact="2"/>
+		<rule des="SmallHail" impact="1"/>
+		<rule des="UnknownPrecpitation" impact="0"/>
+		<rule des="Mt" impact="1"/>
+		<rule des="Fog" impact="1"/>
+		<rule des="Smoke" impact="2"/>
+		<rule des="VolcanicAsh" impact="2"/>
+		<rule des="WidespreadDust" impact="1"/>
+		<rule des="Sand" impact="0"/>
+		<rule des="Haze" impact="1"/>
+		<rule des="Spray" impact="1"/>
+		<rule des="DustSandWhirls" impact="2"/>
+		<rule des="Squalls" impact="2"/>
+		<rule des="Sandstorm" impact="2"/>
+		<rule des="Duststorm" impact="2"/>
+		<rule des="FunnelCloud" impact="2"/>
+		<rule des="Tornado" impact="2"/>
+		<rule des="Waterspout" impact="2"/>
 	</ruleset>
 
 </WeatherConditionRules>
