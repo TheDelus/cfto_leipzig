@@ -25,6 +25,7 @@ public class logic {
         String[] stringArr = new String[3];
 
         int impactvalue = 0;
+        double calcMPH = 1.15078;
 
         stringArr = weather.split(" ");
 
@@ -33,6 +34,31 @@ public class logic {
         String phenomena = stringArr[2];
 
         Set<String> keys = hmap.keySet();
+
+
+        float windSpe = metarDep.getWindSpeedInKnots();
+
+        double inMPH = windSpe * calcMPH;
+
+        if(inMPH > 100){
+            impactvalue += 3;
+        }
+
+        float windSpe2 = metarArr.getWindSpeedInKnots();
+
+        double inMPH2 = windSpe2 * calcMPH;
+
+        if(inMPH2 > 45){
+            impactvalue += 3;
+        }
+
+        if(metarDep.getTemperatureInCelsius() < 0 || metarArr.getTemperatureInCelsius() < 0){
+            impactvalue += 2;
+        }
+
+        if(metarDep.getVisibilityInKilometers() > 1 || metarArr.getVisibilityInKilometers() < 1){
+            impactvalue += 2;
+        }
 
         for(String key:keys){
             if(key.equals(intensity)){
@@ -66,33 +92,7 @@ public class logic {
         this.metarArr = metarArr;
     }
 
-    private int windToProbability(int impactvalue) {
 
-        float windSpe = metarDep.getWindSpeedInKnots();
-
-        double calcMPH = 1.15078;
-
-        double inMPH = windSpe * calcMPH;
-
-        if(inMPH > 100){
-            impactvalue += 3;
-        }
-        return percentProbability(impactvalue);
-    }
-
-    private int windToProbabilityArr(int impactvalue) {
-
-        float windSpe = metarArr.getWindSpeedInKnots();
-
-        double calcMPH = 1.15078;
-
-        double inMPH = windSpe * calcMPH;
-
-        if(inMPH > 45){
-            impactvalue += 3;
-        }
-        return percentProbability(impactvalue);
-    }
 
     public int calculatePerc() {
         return (logiSigWeather(metarToString(metarDep)) + logiSigWeather(metarToString(metarArr)))/2;
