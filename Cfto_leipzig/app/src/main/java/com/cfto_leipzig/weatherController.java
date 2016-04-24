@@ -1,5 +1,6 @@
 package com.cfto_leipzig;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -23,17 +24,18 @@ public class weatherController{
 
     public String getWeather(double lat, double lon, String time){
         c = Calendar.getInstance(); //[YYYY]-[MM]-[DD]T[HH]:[MM]:[SS]
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-ddT");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = df.format(c.getTime());
-        formattedDate += time+":00:00";
-        
-        new Fetcher().execute(url+lat+","+lon+","+formattedDate);
-        return(data);     //https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE,TIME
+        formattedDate += "T"+time+":00:00";
+        String finalUrl = url+lat+","+lon+","+formattedDate;
+        new Fetcher().execute(finalUrl);
+        Log.i("weatherController", finalUrl);
+        //return(data);     //https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE,TIME
+        return "";
     }
 
     class Fetcher extends AsyncTask<String,Void,Void> {
         protected Void doInBackground (String... urls){
-
             try {
                 URL url = new URL(urls[0]);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();

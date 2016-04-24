@@ -51,6 +51,7 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
     public double LocationLatitude = 0.;
     private Controller cont;
     final Calendar c = Calendar.getInstance();
+    weatherController weacont = new weatherController();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -195,6 +196,8 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
         if (mLastLocation != null) {
             LocationLatitude = mLastLocation.getLatitude();
             LocationLongitude = mLastLocation.getLongitude();
+
+            weacont.getWeather(LocationLatitude, LocationLongitude, "14");
 
             Log.i(LOG_KEY, ""+LocationLatitude);
             Log.i(LOG_KEY, ""+LocationLongitude);
