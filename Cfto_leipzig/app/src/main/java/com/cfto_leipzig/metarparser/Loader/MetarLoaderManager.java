@@ -17,9 +17,11 @@ public class MetarLoaderManager implements LoaderManager.LoaderCallbacks<Metar> 
     private static final String LOG_TAG = "MetarLoaderManger";
     Context context;
     private Metar metar;
+
     private Boolean dataReceived = false;
 
-    public MetarLoaderManager(Context context) {
+
+    public MetarLoaderManager(Context context, int metarLoaderDep) {
         this.context = context;
     }
 
@@ -45,16 +47,26 @@ public class MetarLoaderManager implements LoaderManager.LoaderCallbacks<Metar> 
         }
     }
 
-    @Override
-    public void onLoaderReset(Loader<Metar> loader) {
-
-    }
-
     public Metar getMetar() {
         return metar;
+    }
+
+    public void setMetar(Metar metar) {
+        this.metar = metar;
     }
 
     public Boolean getDataReceived() {
         return dataReceived;
     }
+
+    public void setDataReceived(Boolean dataReceived) {
+        this.dataReceived = dataReceived;
+    }
+
+    @Override
+
+    public void onLoaderReset(Loader<Metar> loader) {
+
+    }
+
 }
