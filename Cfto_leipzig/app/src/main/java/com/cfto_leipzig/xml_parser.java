@@ -77,7 +77,7 @@ public class xml_parser {
 //            //System.out.println(i++);
 //        }
         //return hmap;
-        //logic.logi(hmap);
+        //logic.logiSigWeather(hmap);
 
     }
 

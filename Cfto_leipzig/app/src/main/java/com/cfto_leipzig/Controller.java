@@ -29,6 +29,22 @@ public class Controller {
     String iata_dep;
     String iata_arr;
 
+    public Controller(mainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+        mlm_dep = new MetarLoaderManager(mainActivity, METAR_LOADER_DEP);
+        mlm_arr = new MetarLoaderManager(mainActivity, METAR_LOADER_ARR);
+        ap = new AirportParser(mainActivity);
+        al = new AirportLocator(getAirports());
+        xl = new xml_parser(mainActivity);
+        rules = xl.getHmap();
+
+        logic = new logic();
+        logic.setRules(rules);
+
+        //ap.getAirports();
+
+    }
+
     public String getIata_arr() {
         return iata_arr;
     }
@@ -46,24 +62,6 @@ public class Controller {
     }
 
     HashMap<String,Integer> rules;
-
-    public Controller(mainActivity mainActivity) {
-        this.mainActivity = mainActivity;
-        mlm_dep = new MetarLoaderManager(mainActivity, METAR_LOADER_DEP);
-        mlm_arr = new MetarLoaderManager(mainActivity, METAR_LOADER_ARR);
-        ap = new AirportParser(mainActivity);
-        al = new AirportLocator(getAirports());
-        xl = new xml_parser(mainActivity);
-        rules = xl.getHmap();
-
-        logic = new logic();
-        Log.i(LOG_TAG, ""+logic.logi(rules));
-
-
-
-        //ap.getAirports();
-
-    }
 
     public void fetchMetarData(String airportCodeICAO, int code) {
         Log.i(LOG_TAG, "Start Fetch");
@@ -118,5 +116,15 @@ public class Controller {
     }
     public com.cfto_leipzig.mainActivity getMainActivity() {
         return mainActivity;
+    }
+
+    public int computeSigWeather (Metar weatherDep, Metar weatherArr) {
+        int perc = 0;
+
+        logic.setMetarDep(weatherDep);
+        logic.setMetarArr(weatherArr);
+        perc = logic.calculatePerc();
+
+        return perc;
     }
 }

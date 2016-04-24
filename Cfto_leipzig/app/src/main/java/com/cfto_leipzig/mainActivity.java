@@ -105,11 +105,16 @@ public class mainActivity extends AppCompatActivity implements ConnectionCallbac
                     cont.setIata_dep(tv_iata_depart.getText().toString());
                     cont.setIata_arr(tv_iata_arr.getText().toString());
 
-                    Log.i(LOG_KEY, "" + cont.getMetarDataDep().getTemperatureInCelsius());
-                    Log.i(LOG_KEY, "" + cont.getMetarDataArr().getTemperatureInCelsius());
+                    if(cont.getMetarDataDep().getWeatherConditions().size() > 0)
+                        Log.i(LOG_KEY, "" + cont.getMetarDataDep().getWeatherCondition(0).getNaturalLanguageString());
+
+                    if(cont.getMetarDataArr().getWeatherConditions().size() > 0)
+                        Log.i(LOG_KEY, "" + cont.getMetarDataArr().getWeatherCondition(0).getNaturalLanguageString());
+
+                    Log.i(LOG_KEY, "" + cont.computeSigWeather(cont.getMetarDataDep(),cont.getMetarDataArr()));
 
                     Intent intent = new Intent(mainActivity.this, display_probability.class);
-                    intent.putExtra("prob", 100);
+                    intent.putExtra("prob", cont.computeSigWeather(cont.getMetarDataDep(),cont.getMetarDataArr()));
                     intent.putExtra("info", t);
                     startActivity(intent);
                 } else {
